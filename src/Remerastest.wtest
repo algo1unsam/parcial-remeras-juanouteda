@@ -1,0 +1,45 @@
+import Remeras.*
+
+
+describe "creo las remeras"{
+	const gris = new Color(esBasico = true)
+	const verde = new Color(esBasico = false)
+	const negro = new Color(esBasico = true)
+	const blanco = new Color(esBasico = true)
+	const disney = new Marca(importeDerechoAutor = 100, esMarcaComercial = true)
+	const remeraGrisTalle40 = new RemeraLisa(talle=40 , color = gris)
+	const remeraGrisTalle42 = new RemeraLisa(talle=42 , color = gris)
+	const remeraVerdeTalle40 = new RemeraLisa(talle=40 , color = verde)
+	const remeraVerdeTalle42 = new RemeraLisa(talle=40 , color = verde)
+	const remeraNegraBordadaTalle44 = new RemeraBordada(talle=44 , color = negro)
+	const remeraSublimadaGirsTalle40 = new RemeraSublimada (alto = 4 , ancho = 3, marcaSublimado=disney, talle = 40, color = gris)
+	
+
+test "remera Gris testeo costo de color y talle" {
+
+	assert.equals(80, remeraGrisTalle40.costo())
+	assert.equals(100, remeraGrisTalle42.costo())
+	
+}
+test "remera verde testeo costo de color y talle" {
+
+	assert.equals(110, remeraVerdeTalle42.costo())
+	assert.equals(88, remeraVerdeTalle40.costo())
+	
+	
+}
+
+test "remera Negra con bordados blanco y rojo " {
+
+	remeraNegraBordadaTalle44.agregarColor(verde)
+	assert.equals(120, remeraNegraBordadaTalle44.costo())
+	remeraNegraBordadaTalle44.agregarColor(negro)
+	remeraNegraBordadaTalle44.agregarColor(blanco)
+	remeraNegraBordadaTalle44.agregarColor(gris)
+	remeraNegraBordadaTalle44.agregarColor(verde)
+	assert.equals(110, remeraNegraBordadaTalle44.costo())
+	
+	
+}
+
+}
